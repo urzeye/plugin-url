@@ -1,6 +1,5 @@
 package com.janetfilter.plugins.url;
 
-
 import com.janetfilter.core.commons.DebugInfo;
 import com.janetfilter.core.models.FilterRule;
 

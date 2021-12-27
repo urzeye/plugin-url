@@ -1,25 +1,25 @@
 package com.janetfilter.plugins.url;
 
-
 import com.janetfilter.core.Environment;
-import com.janetfilter.core.models.FilterRule;
 import com.janetfilter.core.plugin.MyTransformer;
+import com.janetfilter.core.plugin.PluginConfig;
 import com.janetfilter.core.plugin.PluginEntry;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class URLFilterPlugin implements PluginEntry {
+    private static final String PLUGIN_NAME = "URL";
     private final List<MyTransformer> transformers = new ArrayList<>();
 
     @Override
-    public void init(Environment environment, List<FilterRule> filterRules) {
-        transformers.add(new HttpClientTransformer(filterRules));
+    public void init(Environment environment, PluginConfig config) {
+        transformers.add(new HttpClientTransformer(config.getBySection(PLUGIN_NAME)));
     }
 
     @Override
     public String getName() {
-        return "URL";
+        return PLUGIN_NAME;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class URLFilterPlugin implements PluginEntry {
 
     @Override
     public String getVersion() {
-        return "v1.0.1";
+        return "v1.1.0";
     }
 
     @Override
